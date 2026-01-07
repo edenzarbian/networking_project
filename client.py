@@ -7,7 +7,7 @@ from datetime import datetime
 class ChatClient:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Purple WhatsApp")
+        self.root.title("EDEN&NETA'S💜")
         self.root.geometry("900x650")
         self.root.configure(bg="#E6E6FA")
         self.history = {} 
@@ -18,7 +18,7 @@ class ChatClient:
     def setup_login(self):
         self.login_frame = tk.Frame(self.root, bg="#E6E6FA")
         self.login_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-        tk.Label(self.login_frame, text="💜 Purple Login 💜", bg="#E6E6FA", font=("Arial", 20, "bold"), fg="#4B0082").pack(pady=20)
+        tk.Label(self.login_frame, text="💜 Welcome 💜", bg="#E6E6FA", font=("Arial", 20, "bold"), fg="#4B0082").pack(pady=20)
         self.name_ent = tk.Entry(self.login_frame, font=("Arial", 14), justify='center')
         self.name_ent.pack(pady=10)
         tk.Button(self.login_frame, text="Connect", command=self.connect, bg="#4B0082", fg="white", font=("Arial", 12, "bold"), width=15).pack(pady=10)
