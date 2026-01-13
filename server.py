@@ -6,7 +6,7 @@ PORT = 65432
 clients = {} # {username: connection}
 
 def broadcast_user_update():
-    """שולח את רשימת המשתמשים המעודכנת לכל מי שכרגע מחובר"""
+    #שולח את רשימת המשתמשים המעודכנת לכל מי שכרגע מחובר
     user_list = ",".join(clients.keys())
     msg = f"USER_LIST_UPDATE:{user_list}"
     for conn in clients.values():
@@ -52,7 +52,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((HOST, PORT))
 server.listen(5)
-print("🟢 Server is Up and listening...")
+print("Server is Up and listening")
 
 while True:
     conn, addr = server.accept()

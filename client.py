@@ -7,7 +7,7 @@ from datetime import datetime
 class ChatClient:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("EDEN&NETA'S💜")
+        self.root.title("EDEN & NETA'S CHAT💜")
         self.root.geometry("900x650")
         self.root.configure(bg="#E6E6FA")
         self.history = {} 
@@ -34,7 +34,7 @@ class ChatClient:
             self.setup_chat_ui()
             threading.Thread(target=self.receive, daemon=True).start()
         except:
-            messagebox.showerror("Error", "Server not responding!")
+            messagebox.showerror("Error", "Server not responding")
 
     def setup_chat_ui(self):
         self.root.grid_columnconfigure(1, weight=1)
@@ -42,7 +42,7 @@ class ChatClient:
         header = tk.Label(self.root, text=f"Logged in as: {self.username}", bg="#4B0082", fg="white", font=("Arial", 11, "bold"))
         header.grid(row=0, column=0, columnspan=2, sticky="ew", ipady=10)
 
-        # רשימת המשתמשים (התיבה שהייתה ריקה אצלך)
+        #רשימת המשתמשים
         self.sidebar = tk.Frame(self.root, bg="#D8BFD8", width=200)
         self.sidebar.grid(row=1, column=0, sticky="ns")
         tk.Label(self.sidebar, text="ONLINE", bg="#D8BFD8", font=("Arial", 10, "bold")).pack(pady=10)
@@ -103,7 +103,7 @@ class ChatClient:
                 data = self.client.recv(1024).decode('utf-8')
                 if not data: break
                 
-                # כאן מתרחש עדכון הרשימה
+                # עדכון הרשימה
                 if data.startswith("USER_LIST_UPDATE:"):
                     users = data.split(":")[1].split(",")
                     self.user_list.delete(0, tk.END)
@@ -112,7 +112,7 @@ class ChatClient:
                 
                 elif data.startswith("SEND_FAILED:"):
                     self.area.config(state='normal')
-                    self.area.insert(tk.END, f"\n--- ❌ {data.split(':', 1)[1]} ---\n", "error")
+                    self.area.insert(tk.END, f"\n--- {data.split(':', 1)[1]} ---\n", "error")
                     self.area.config(state='disabled')
 
                 elif ":" in data:
